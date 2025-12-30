@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Streamlit
+.streamlit/
+
+# Virtual Environment (if you have one)
+venv/
+env/
+.env
+
+# Data (Optional: If students.csv is huge or temporary, ignore it. 
+# But for this demo app, you probably want to keep it so others can run it immediately)
+# students.csv

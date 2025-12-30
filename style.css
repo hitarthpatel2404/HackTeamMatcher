@@ -1,0 +1,145 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&display=swap');
+
+.stApp {
+    background-color: #0b0c10;
+    background-image: 
+        radial-gradient(at 50% 0%, rgba(99, 102, 241, 0.2) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(236, 72, 153, 0.15) 0px, transparent 40%);
+    color: #e2e8f0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    margin-top: 50px; 
+}
+
+/* HAZARD TAPE */
+.warning-tape {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    z-index: 99999;
+    background: repeating-linear-gradient(45deg, #fbbf24, #fbbf24 20px, #1f2937 20px, #1f2937 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    border-bottom: 2px solid #000;
+}
+.warning-text {
+    background-color: #000;
+    color: #fbbf24;
+    padding: 4px 15px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #fbbf24;
+    transform: skew(-10deg);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+}
+
+/* CARDS */
+.glass-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: transform 0.2s ease;
+}
+.glass-card:hover {
+    border-color: #818cf8;
+    transform: translateY(-2px);
+    background: rgba(30, 41, 59, 0.9);
+}
+
+/* --- SPECIAL HIGHLIGHTS --- */
+
+/* 1. Your Registered Team (in Join Squad) */
+.my-team-card {
+    background: rgba(50, 40, 10, 0.6) !important;
+    border: 2px solid #fbbf24 !important;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.2);
+}
+
+/* 2. Your Own Profile (in Search Results) */
+.is-me-card {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%) !important;
+    border: 2px solid #c084fc !important;
+    box-shadow: 0 0 25px rgba(192, 132, 252, 0.3);
+}
+.me-badge {
+    background-color: #c084fc;
+    color: #fff;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    margin-bottom: 10px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(192, 132, 252, 0.4);
+}
+
+/* UI ELEMENTS */
+.hero-section {
+    padding: 60px 20px 40px 20px; 
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.hero-title {
+    font-size: 5rem;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 40px rgba(99, 102, 241, 0.3);
+}
+.hero-highlight {
+    background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    max-width: 700px;
+    margin: 15px auto 0 auto;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.profile-box {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.05);
+    margin-bottom: 25px;
+}
+
+.stButton > button {
+    border-radius: 12px;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    font-weight: 600;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.2s;
+}
+.stButton > button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+.action-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 10px;
+}
