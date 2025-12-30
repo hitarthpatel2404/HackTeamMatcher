@@ -12,14 +12,14 @@ def load_css(file_name):
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 load_css('style.css')
 
-# --- HEADER & WARNING ---
+# HEADER & WARNING
 st.markdown("""
     <div class="warning-tape">
         <span class="warning-text">⚠️ DATABASE SIMULATION MODE • REAL DATA COMING SOON ⚠️</span>
     </div>
 """, unsafe_allow_html=True)
 
-# --- SESSION STATE ---
+# SESSION STATE
 if 'user_avatar' not in st.session_state:
     st.session_state.user_avatar = f"https://api.dicebear.com/7.x/notionists/svg?seed={random.randint(1,1000)}"
 if 'current_mode' not in st.session_state:
@@ -29,11 +29,11 @@ if 'user_name' not in st.session_state:
 if 'user_discord' not in st.session_state:
     st.session_state.user_discord = "guest#1234"
 
-# --- DATA MANAGEMENT (LIVE DB) ---
+# DATA MANAGEMENT
 if 'df_live' not in st.session_state:
     try:
         df_init = pd.read_csv('students.csv')
-        # Add a placeholder row for the Current User (ID 9999)
+        # placeholder row for the Current User (ID 9999)
         user_row = {
             'Student_ID': 9999,
             'Name': st.session_state.user_name,
@@ -55,7 +55,7 @@ if 'df_live' not in st.session_state:
 
 df = st.session_state.df_live
 
-# --- FUNCTIONS: UPDATE / DELETE / DISBAND ---
+# FUNCTIONS: UPDATE / DELETE / DISBAND 
 def update_user_stats(py, fe, be, de, sql, hours, name, discord):
     idx = df[df['Student_ID'] == 9999].index
     if not idx.empty:
@@ -75,7 +75,7 @@ def update_user_stats(py, fe, be, de, sql, hours, name, discord):
         st.session_state.df_live = df 
 
 def delete_user_profile():
-    # Remove the user row completely
+    # Removing  the user row completely
     st.session_state.df_live = df[df['Student_ID'] != 9999]
     st.session_state.user_name = "Deleted User"
     st.session_state.user_discord = "---"
@@ -114,11 +114,11 @@ def register_team_modal():
                 st.success(f"Team '{t_name}' launched!")
                 st.rerun()
 
-# --- SIDEBAR UI ---
+# SIDEBAR UI
 with st.sidebar:
     st.markdown("### 👤 Your Identity")
     
-    # Check if user exists
+    # Checking if user exists
     user_exists = not df[df['Student_ID'] == 9999].empty
     
     if user_exists:
@@ -173,7 +173,7 @@ with st.sidebar:
             st.session_state.pop('df_live') # Clear session to force reload
             st.rerun()
 
-# --- HERO ---
+# HERO
 st.markdown("""
 <div class="hero-section">
     <div class="hero-title">
@@ -186,7 +186,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- TOGGLES ---
+# TOGGLES
 col_spacer_l, col_center, col_spacer_r = st.columns([1, 2, 1])
 with col_center:
     btn_col1, btn_col2 = st.columns(2)
@@ -200,9 +200,8 @@ with col_center:
             st.rerun()
 st.write("") 
 
-# ==========================================
 # MODE 1: FIND TEAMMATE
-# ==========================================
+
 if st.session_state.current_mode == "find_teammate":
     
     with st.container():
@@ -229,7 +228,7 @@ if st.session_state.current_mode == "find_teammate":
             filtered.get('Primary_Interest', pd.Series(['']*len(filtered))).str.lower().str.contains(search_term, na=False)
         ]
 
-    # Get my profile stats for matching distance
+    # Get  profile stats for matching distance
     if not df[df['Student_ID'] == 9999].empty:
         user_vals = df[df['Student_ID'] == 9999].iloc[0]
         my_profile = np.array([[user_vals['Python'], user_vals['Frontend'], user_vals['Backend'], user_vals['Design'], user_vals['SQL']]])
@@ -291,9 +290,8 @@ if st.session_state.current_mode == "find_teammate":
                 
                 st.markdown("---")
 
-# ==========================================
 # MODE 2: JOIN A TEAM
-# ==========================================
+
 elif st.session_state.current_mode == "join_team":
     
     # 1. Show MY Team

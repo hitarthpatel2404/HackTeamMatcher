@@ -3,7 +3,7 @@ import random
 from faker import Faker
 
 fake = Faker()
-num_students = 200 # Smaller dataset for better visuals
+num_students = 200 
 
 def get_skills_and_role():
     roll = random.random()
@@ -21,7 +21,7 @@ for i in range(1, num_students + 1):
     role_name, skills = get_skills_and_role()
     
     # Team Logic
-    is_recruiting = random.choice([True, False, False]) # 33% chance to be a team lead
+    is_recruiting = random.choice([True, False, False])
     team_name = fake.bs().title() + " Labs" if is_recruiting else "None"
     members_needed = random.randint(1, 3) if is_recruiting else 0
     looking_for = random.choice(['Frontend', 'Backend', 'Data', 'Any']) if is_recruiting else "None"
